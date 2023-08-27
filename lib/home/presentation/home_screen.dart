@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'components/bottom_app_bar.dart';
-import 'components/floating_action_button.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      extendBody: true,
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
-            Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
-            Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
-          ],
-        ),
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
+          Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
+          Center(child: Text('dummy\n\n\n\n\n\ndummy\n\n\n\n\n\n ndummy\n\n\n\n\n\n ndummy')),
+        ],
       ),
-
-      // bottomNavigationBar or bottomAppBar
-      bottomNavigationBar: bottomAppBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: floatingActionButton(),
     );
   }
 
