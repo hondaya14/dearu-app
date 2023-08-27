@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../common/custom_color.dart';
 import 'components/bottom_app_bar.dart';
+import 'components/floating_action_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,14 +24,7 @@ class HomeScreen extends StatelessWidget {
       // bottomNavigationBar or bottomAppBar
       bottomNavigationBar: bottomAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        elevation: 5,
-        backgroundColor: CustomColor.fab,
-        onPressed: () {
-          print('press fab');
-        },
-        child: const Icon(Icons.edit, color: Color(0xFFFFFFFF), size: 30),
-      ),
+      floatingActionButton: floatingActionButton(),
     );
   }
 
