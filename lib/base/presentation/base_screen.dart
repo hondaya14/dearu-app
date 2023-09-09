@@ -43,7 +43,7 @@ class BaseScreen extends StatelessWidget {
       ),
       bottomNavigationBar: bottomAppBar(screenService),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: floatingActionButton(),
+      floatingActionButton: letterEditFloatingActionButton(),
     );
   }
 }

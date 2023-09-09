@@ -1,15 +1,29 @@
-import 'package:dearu/contacts/presentation/contacts_screen.dart';
-import 'package:dearu/home/presentation/home_screen.dart';
-import 'package:dearu/postbox/presentation/postbox_screen.dart';
-import 'package:dearu/setting/presentation/setting_screen.dart';
+import 'package:dearu/base/presentation/base_screen.dart';
+import 'package:dearu/letterEdit/presentation/letter_edit_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
+class AppPath {
+  static const String base = "/base";
+  static const String letterEdit = "/letter-edit";
+}
+
 final router = GoRouter(
-  initialLocation: '/home',
+  initialLocation: AppPath.base,
   routes: [
-    GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
-    GoRoute(path: '/postbox', builder: (context, state) => PostboxScreen()),
-    GoRoute(path: '/contacts', builder: (context, state) => ContactsScreen()),
-    GoRoute(path: '/setting', builder: (context, state) => SettingScreen()),
+    GoRoute(path: AppPath.base, builder: (context, state) => BaseScreen()),
+    GoRoute(
+        path: AppPath.letterEdit,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            child: LetterEditScreen(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: CurveTween(curve: Curves.easeIn).animate(animation),
+                child: child,
+              );
+            },
+          );
+        }),
   ],
 );
