@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../common/router.dart';
+import '../../common/custom_color.dart';
+import '../../common/logger.dart';
+import 'components/letter_edit_painter.dart';
 
 class LetterEditScreen extends StatelessWidget {
   const LetterEditScreen({super.key});
@@ -9,16 +11,20 @@ class LetterEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            router.go(AppPath.base);
-          },
-        ),
+        title: Text('save'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              logger.i('save');
+            },
+          )
+        ],
+        backgroundColor: CustomColor.fab,
       ),
-      body: Center(
-        child: Container(
-          child: Text("Letter Edit Screen"),
+      body: SafeArea(
+        child: CustomPaint(
+          painter: LetterEditPainter(),
         ),
       ),
     );
