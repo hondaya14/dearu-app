@@ -1,6 +1,6 @@
-import 'package:dearu/base/domain/value/screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../base/domain/value/screen.dart';
 import '../presentation/controller/screen_controller.dart';
 
 class ScreenService {
