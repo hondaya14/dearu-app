@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 import '../base/presentation/base_screen.dart';
-import '../letterEdit/presentation/letter_edit_screen.dart';
+import '../letter_edit/presentation/letter_edit_screen.dart';
 
 class AppPath {
   static const String base = "/base";
