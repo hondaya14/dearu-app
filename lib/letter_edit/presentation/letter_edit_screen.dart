@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../common/custom_color.dart';
 import '../../common/logger.dart';
+import 'components/floating_action_button.dart';
 import 'components/letter_edit_painter.dart';
 
 class LetterEditScreen extends StatelessWidget {
@@ -18,15 +18,17 @@ class LetterEditScreen extends StatelessWidget {
             onPressed: () {
               logger.i('save');
             },
-          )
+          ),
         ],
-        backgroundColor: CustomColor.fab,
+        backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
         child: CustomPaint(
           painter: LetterEditPainter(),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: closeFloatingActionButton(),
     );
   }
 }
