@@ -1,30 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/logger.dart';
+import '../controller/letter_edit_painter.dart';
 import 'components/floating_action_button.dart';
-import 'components/letter_edit_painter.dart';
 
-class LetterEditScreen extends StatelessWidget {
+class LetterEditScreen extends ConsumerWidget {
   const LetterEditScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    List<Offset?> points = [];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('save'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () {
-              logger.i('save');
-            },
-          ),
-        ],
-        backgroundColor: Colors.transparent,
-      ),
       body: SafeArea(
-        child: CustomPaint(
-          painter: LetterEditPainter(),
+        child: Builder(
+          builder: (context) {
+            return GestureDetector(
+              onPanStart: (details) {
+                RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+                Offset? localPosition = renderBox!.globalToLocal(details.globalPosition);
+                points = List.from(points)..add(localPosition);
+                ref.read(pointSP.notifier).update(points);
+              },
+              onPanUpdate: (details) {
+                RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+                Offset? localPosition = renderBox!.globalToLocal(details.globalPosition);
+                points = List.from(points)..add(localPosition);
+                ref.read(pointSP.notifier).update(points);
+              },
+              onPanEnd: (details) {
+                points.add(null);
+                ref.read(pointSP.notifier).update(points);
+              },
+              child: Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  final List<Offset?> points = ref.watch(pointSP);
+                  return CustomPaint(
+                    painter: LetterEditPainter(points: points),
+                    size: Size.infinite,
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
