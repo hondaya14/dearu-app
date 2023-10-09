@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "schedule": [
+    "every weekend"
+  ],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 1,
+  "groupName": "all dependencies",
+  "groupSlug": "all",
+  "extends": [
+    "config:base"
+  ]
+}
