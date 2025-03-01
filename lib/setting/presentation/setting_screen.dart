@@ -11,7 +11,7 @@ class SettingScreen extends StatelessWidget {
       child: ListBody(
         children: [
           ListTile(
-            leading: const Icon(Icons.coffee),
+            leading: const Icon(Icons.coffee_rounded),
             title: const Text('Buy me a coffee'),
             subtitle: const Text('開発者へコーヒーを買う'),
             onTap: () {
@@ -20,7 +20,7 @@ class SettingScreen extends StatelessWidget {
           ),
           header('一般'),
           ListTile(
-            leading: const Icon(Icons.share),
+            leading: const Icon(Icons.share_rounded),
             title: const Text('シェア'),
             subtitle: const Text('誰かに教えなきゃもったいない'),
             onTap: () {
@@ -44,7 +44,7 @@ class SettingScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.snowboarding_sharp),
+            leading: const Icon(Icons.snowboarding_outlined),
             title: const Text('開発者'),
             subtitle: const Text('ここはどこ？私は誰？'),
             onTap: () {
@@ -53,7 +53,7 @@ class SettingScreen extends StatelessWidget {
           ),
           header('設定'),
           ListTile(
-            leading: const Icon(Icons.notifications),
+            leading: const Icon(Icons.notifications_none_rounded),
             title: const Text('通知設定'),
             subtitle: const Text('あの人からの想いに音を乗せて'),
             onTap: () {
@@ -61,7 +61,7 @@ class SettingScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.notifications),
+            leading: const Icon(Icons.language_rounded),
             title: const Text('言語設定'),
             subtitle: const Text('地図に国境はない'),
             onTap: () {
