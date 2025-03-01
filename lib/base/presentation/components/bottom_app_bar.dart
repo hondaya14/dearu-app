@@ -16,8 +16,10 @@ Widget bottomAppBar(ScreenService screenService) {
         elevation: 0,
         color: CustomColor.bgBAB,
         shape: const AutomaticNotchedShape(
-          RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
-          RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16.0))),
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30.0))),
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(16.0))),
         ),
         padding: EdgeInsets.zero,
         child: Consumer(
@@ -43,9 +45,9 @@ Widget bottomAppBar(ScreenService screenService) {
                   isSelected: currentScreen == Screen.contacts,
                 ),
                 _bottomAppBarIconButton(
-                  iconData: Icons.settings,
-                  onPressed: () => screenService.moveTo(ref, Screen.setting),
-                  isSelected: currentScreen == Screen.setting,
+                  iconData: Icons.menu,
+                  onPressed: () => screenService.moveTo(ref, Screen.menu),
+                  isSelected: currentScreen == Screen.menu,
                 ),
               ],
             );
@@ -58,7 +60,9 @@ Widget bottomAppBar(ScreenService screenService) {
 
 // BottomAppBarIconButton
 Widget _bottomAppBarIconButton(
-    {required IconData iconData, VoidCallback? onPressed, required bool isSelected}) {
+    {required IconData iconData,
+    VoidCallback? onPressed,
+    required bool isSelected}) {
   return Container(
     decoration: isSelected
         ? BoxDecoration(
@@ -78,5 +82,6 @@ Widget _bottomAppBarIconButton(
 // dummyIconButton for Floating action button on bottomAppBar
 IconButton _dummyIconButton() {
   return const IconButton(
-      icon: Icon(Icons.circle, color: Colors.transparent, size: 0), onPressed: null);
+      icon: Icon(Icons.circle, color: Colors.transparent, size: 0),
+      onPressed: null);
 }

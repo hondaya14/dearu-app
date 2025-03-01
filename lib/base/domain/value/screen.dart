@@ -3,5 +3,5 @@ enum Screen {
   postbox,
   letterEdit,
   contacts,
-  setting,
+  menu,
 }

@@ -6,9 +6,8 @@ final Logger logger = Logger(
     PrettyPrinter(
       noBoxingByDefault: true,
       methodCount: 1,
-      lineLength: 180,
       colors: false,
-      printEmojis: false,
+      printEmojis: true,
     ),
   ),
   output: null,
