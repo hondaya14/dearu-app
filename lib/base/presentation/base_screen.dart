@@ -25,15 +25,16 @@ class BaseScreen extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
       body: SafeArea(
         bottom: false,
         child: Consumer(
-          builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            Screen currentScreen = ref.watch(currentScreenSNP);
+          builder: (final BuildContext context, final WidgetRef ref,
+              final Widget? child) {
+            final Screen currentScreen = ref.watch(currentScreenSNP);
             return IndexedStack(
               index: currentScreen.index,
               children: _screens,
