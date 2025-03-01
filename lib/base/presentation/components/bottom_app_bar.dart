@@ -23,8 +23,12 @@ Widget bottomAppBar(ScreenService screenService) {
         ),
         padding: EdgeInsets.zero,
         child: Consumer(
-          builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            Screen currentScreen = ref.watch(currentScreenSNP);
+          builder: (
+            final BuildContext context,
+            final WidgetRef ref,
+            final Widget? child,
+          ) {
+            final Screen currentScreen = ref.watch(currentScreenSNP);
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -60,9 +64,9 @@ Widget bottomAppBar(ScreenService screenService) {
 
 // BottomAppBarIconButton
 Widget _bottomAppBarIconButton(
-    {required IconData iconData,
-    VoidCallback? onPressed,
-    required bool isSelected}) {
+    {required final IconData iconData,
+    final VoidCallback? onPressed,
+    required final bool isSelected}) {
   return Container(
     decoration: isSelected
         ? BoxDecoration(
