@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/logger.dart';
 
@@ -11,6 +12,9 @@ class SettingScreen extends StatelessWidget {
       child: ListBody(
         children: [
           ListTile(
+            // RevenueCat?
+            // Buymeacoffee?
+            // Stripe?
             leading: const Icon(Icons.coffee_rounded),
             title: const Text('Buy me a coffee'),
             subtitle: const Text('開発者へコーヒーを買う'),
@@ -39,16 +43,29 @@ class SettingScreen extends StatelessWidget {
             leading: const Icon(Icons.mail_outline),
             title: const Text('ご意見'),
             subtitle: const Text('クレームから愛の告白まで'),
-            onTap: () {
-              logger.i('tapped mail button');
+            onTap: () async {
+              // NOTE: iOS Simulator cannot launch mailto scheme
+              final Uri url = Uri.parse('mailto:nqvno14@gmail.com');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                logger.e('Unable launch url: $url');
+                throw 'Unable to launch url $url';
+              }
             },
           ),
           ListTile(
             leading: const Icon(Icons.snowboarding_outlined),
             title: const Text('開発者'),
             subtitle: const Text('ここはどこ？私は誰？'),
-            onTap: () {
-              logger.i('tapped site button');
+            onTap: () async {
+              final Uri url = Uri.parse('https://nqvno.net');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                logger.e('Unable launch url: $url');
+                throw 'Unable to launch url $url';
+              }
             },
           ),
           header('設定'),
@@ -63,7 +80,7 @@ class SettingScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.language_rounded),
             title: const Text('言語設定'),
-            subtitle: const Text('地図に国境はない'),
+            subtitle: const Text('国境を超えていけ'),
             onTap: () {
               logger.i('tapped language button');
             },
