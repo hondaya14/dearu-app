@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../common/custom_color.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -44,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icon(
                   Icons.man_outlined,
                   size: size.width / 3,
+                  color: CustomColor.bgBAB,
                 ),
                 Text(whisper[whisper_index]),
               ],
