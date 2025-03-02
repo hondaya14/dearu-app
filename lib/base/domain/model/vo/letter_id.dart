@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import '../../../../common/exception/exception.dart';
 
 @immutable
-class UserName {
+class LetterId {
   final String value;
 
-  UserName(this.value) {
+  LetterId(this.value) {
     // domain spec
     if (value.isEmpty) {
-      throw DomainModelException('user name must not be empty');
+      throw DomainModelException('letter id must not be empty');
     }
   }
 }
