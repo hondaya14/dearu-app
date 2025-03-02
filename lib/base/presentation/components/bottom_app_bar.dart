@@ -38,7 +38,8 @@ Widget bottomAppBar(ScreenService screenService) {
                   isSelected: currentScreen == Screen.home,
                 ),
                 _bottomAppBarIconButton(
-                  iconData: Icons.inbox_rounded,
+                  // TODO: 新着バッチ
+                  iconData: Icons.mail_outline,
                   onPressed: () => screenService.moveTo(ref, Screen.postbox),
                   isSelected: currentScreen == Screen.postbox,
                 ),

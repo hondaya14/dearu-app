@@ -16,17 +16,17 @@ class _HomeScreenState extends State<HomeScreen> {
     '書いた文字は、より心が伝わるよ。',
     '普段言えない ありがとう。を伝えよう',
   ];
-  int whisper_index = 0;
+  int whisperIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    whisper_index = 0;
+    whisperIndex = 0;
   }
 
   void changeWhisper() {
     setState(() {
-      whisper_index = (whisper_index + 1) % (whisper.length - 1);
+      whisperIndex = (whisperIndex + 1) % (whisper.length - 1);
     });
   }
 
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: size.width / 3,
                   color: CustomColor.bgBAB,
                 ),
-                Text(whisper[whisper_index]),
+                Text(whisper[whisperIndex]),
               ],
             ),
           ),

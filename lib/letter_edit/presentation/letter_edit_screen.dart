@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../controller/letter_edit_painter.dart';
 import 'components/floating_action_button.dart';
@@ -12,8 +11,6 @@ class DrawingPage extends StatefulWidget {
 }
 
 class _DrawingPageState extends State<DrawingPage> {
-  List<Offset?> points = [];
-
   // 描画履歴を保存するリスト
   List<List<Offset>> strokes = [];
 
@@ -21,16 +18,13 @@ class _DrawingPageState extends State<DrawingPage> {
   List<Offset> currentStroke = [];
 
   // 鉛筆の濃さ
-  double pencilDarkness = 0.8;
+  double pencilDarkness = 0.9;
 
   // 鉛筆の太さ
   double pencilThickness = 3.0;
 
   // 鉛筆の色
   Color pencilColor = Colors.black;
-
-  // 紙のテクスチャ種類
-  PaperTexture paperTexture = PaperTexture.washi;
 
   // 紙の色
   Color paperColor = Colors.white;
@@ -61,23 +55,17 @@ class _DrawingPageState extends State<DrawingPage> {
                   currentStroke.clear();
                 });
               },
-              child: Consumer(
-                builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                  final List<Offset?> points = ref.watch(pointSP);
-                  return CustomPaint(
-                    painter: LetterEditPainter(
-                      strokes: strokes,
-                      currentStroke: currentStroke,
-                      pencilDarkness: pencilDarkness,
-                      pencilThickness: pencilThickness,
-                      pencilColor: pencilColor,
-                      paperTexture: paperTexture,
-                      paperColor: paperColor,
-                      textureIntensity: textureIntensity,
-                    ),
-                    size: Size.infinite,
-                  );
-                },
+              child: CustomPaint(
+                painter: LetterEditPainter(
+                  strokes: strokes,
+                  currentStroke: currentStroke,
+                  pencilDarkness: pencilDarkness,
+                  pencilThickness: pencilThickness,
+                  pencilColor: pencilColor,
+                  paperColor: paperColor,
+                  textureIntensity: textureIntensity,
+                ),
+                size: Size.infinite,
               ),
             );
           },
