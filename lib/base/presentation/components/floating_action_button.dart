@@ -14,7 +14,7 @@ Widget letterEditFloatingActionButton() {
         elevation: 5,
         backgroundColor: CustomColor.fab,
         onPressed: () {
-          router.go(AppPath.letterEdit);
+          router.go(AppPathType.letterEdit.fullPath);
         },
         child: const Icon(Icons.edit, color: Color(0xFFFFFFFF), size: 30),
       ),
