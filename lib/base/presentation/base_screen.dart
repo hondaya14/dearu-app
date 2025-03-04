@@ -11,6 +11,8 @@ import './controller/screen_controller.dart';
 import 'components/bottom_app_bar.dart';
 import 'components/floating_action_button.dart';
 
+Size? screenSize;
+
 class BaseScreen extends StatelessWidget {
   BaseScreen({super.key});
 
@@ -26,6 +28,7 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,

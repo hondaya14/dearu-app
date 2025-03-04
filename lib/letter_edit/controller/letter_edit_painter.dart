@@ -1,7 +1,7 @@
-import 'dart:math' as math;
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
+
+import '../../base/presentation/base_screen.dart';
+import '../../common/logger.dart';
 
 class LetterEditPainter extends CustomPainter {
   final List<List<Offset>> strokes;
@@ -46,54 +46,23 @@ class LetterEditPainter extends CustomPainter {
 
       path.quadraticBezierTo(p0.dx, p0.dy, p1.dx, p1.dy);
 
+      final screenDiagonalDistance =
+          Offset(screenSize?.width ?? 1, screenSize?.height ?? 1).distance;
+      final distance = (p1 - p0).distance / screenDiagonalDistance;
+
       //path.lineTo(p1.dx, p1.dy);
-    }
 
-    // 鉛筆の基本スタイル
-    final basePaint = Paint()
-      ..color = pencilColor.withAlpha(250)
-      ..strokeWidth = pencilThickness
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round
-      ..style = PaintingStyle.stroke;
+      logger.i(distance);
 
-    // 鉛筆のテクスチャを表現するためのシェーダー
-    final shader = ui.Gradient.linear(
-      Offset.zero,
-      const Offset(10, 10),
-      [
-        pencilColor.withAlpha(255),
-        pencilColor.withAlpha(120),
-      ],
-      [0.0, 1.0],
-      TileMode.repeated,
-      Matrix4.rotationZ(0.5).storage,
-    );
+      // 鉛筆の基本スタイル
+      final basePaint = Paint()
+        ..color = pencilColor.withAlpha(255 * (1 - distance).toInt())
+        ..strokeWidth = pencilThickness
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..style = PaintingStyle.stroke;
 
-    basePaint.shader = shader;
-    canvas.drawPath(path, basePaint);
-
-    // 鉛筆の粒子感を表現するための小さなドット
-    if (points.length > 2) {
-      final random = math.Random(42); // 一貫性のある乱数を生成
-      final dotPaint = Paint()
-        ..color = pencilColor.withAlpha(255)
-        ..strokeWidth = pencilThickness * 1
-        ..strokeCap = StrokeCap.round;
-
-      for (int i = 0; i < points.length; i += 3) {
-        final point = points[i];
-        // パスの周りにランダムな点を追加
-        for (int j = 0; j < 3; j++) {
-          final offsetX = (random.nextDouble() - 0.6) * pencilThickness * 1.5;
-          final offsetY = (random.nextDouble() - 0.6) * pencilThickness * 1.5;
-          // canvas.drawPoints(
-          //   ui.PointMode.points,
-          //   [Offset(point.dx + offsetX, point.dy + offsetY)],
-          //   dotPaint,
-          // );
-        }
-      }
+      canvas.drawPath(path, basePaint);
     }
   }
 
