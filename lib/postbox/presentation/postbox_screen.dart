@@ -29,8 +29,8 @@ class _PostboxScreenState extends State<PostboxScreen> {
           sentDateTime: DateTime.now(),
           sentPlanDateTime: DateTime.now(),
           receiptDateTime: DateTime.now()),
-      LetterId('letterId'): Letter(
-          letterId: LetterId('letterId'),
+      LetterId('test'): Letter(
+          letterId: LetterId('test'),
           senderUserId: UserId('userId'),
           letterData: [],
           sentDateTime: DateTime.now(),

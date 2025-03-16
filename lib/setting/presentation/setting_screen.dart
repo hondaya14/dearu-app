@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../common/constants.dart';
 import '../../common/logger.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -45,7 +46,9 @@ class SettingScreen extends StatelessWidget {
             subtitle: const Text('クレームから愛の告白まで'),
             onTap: () async {
               // NOTE: iOS Simulator cannot launch mailto scheme
-              final Uri url = Uri.parse('mailto:nqvno14@gmail.com');
+              final Uri url = Uri.parse(
+                'mailto:$supportMail?subject=$supportMailSubject&body=$supportMailBody',
+              );
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
               } else {
