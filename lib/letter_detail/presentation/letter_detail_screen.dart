@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../base/domain/model/entity/letter.dart';
+import '../../common/logger.dart';
 
 class LetterDetailScreen extends StatelessWidget {
   final Letter letter;
@@ -12,6 +13,7 @@ class LetterDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    logger.i(letter.letterId.value);
     return Scaffold(
       appBar: AppBar(
         title: Text(letter.senderUserId.value),
@@ -50,7 +52,6 @@ class LetterDetailScreen extends StatelessWidget {
   }
 
   Future<HttpClientResponse> _getSvgData() async {
-    await Future.delayed(const Duration(seconds: 1));
     final httpClient = HttpClient();
     final request = await httpClient.getUrl(Uri.parse(
         "https://pub-8545ef1bf4bc46a7b15bc2e91cbea974.r2.dev/${letter.letterId}.svg"));

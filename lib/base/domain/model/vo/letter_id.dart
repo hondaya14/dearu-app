@@ -12,4 +12,9 @@ class LetterId {
       throw DomainModelException('letter id must not be empty');
     }
   }
+
+  @override
+  String toString() {
+    return value;
+  }
 }
